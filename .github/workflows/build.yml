@@ -23,3 +23,9 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Run SonarQube analysis
+        run: ./gradlew sonar
+        env:
+          SONARQUBE_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
+          SONARQUBE_LOGIN: ${{ secrets.SONARQUBE_LOGIN }}
