@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'org.sonarqube' version '5.0.0.4638'
 	id 'org.springframework.boot' version '3.3.0'
 	id 'io.spring.dependency-management' version '1.1.5'
 }
@@ -25,4 +26,19 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+sonarqube {
+	properties {
+		property "sonar.host.url", System.getenv("SONARQUBE_HOST_URL")
+		property "sonar.login", System.getenv("SONARQUBE_LOGIN")
+		property "sonar.projectName", "sonarqube_demo"
+		property "sonar.projectKey", "sonarqube_demo"
+		property "sonar.sourceEncoding", "UTF-8"
+		property "sonar.java.sources", "src/main/java"
+		property "sonar.java.tests", "src/test/java"
+		property "sonar.java.binaries", "build/classes/java/main"
+		// property "sonar.junit.reportPaths", "build/test-results/test"
+		// property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml"
+	}
 }

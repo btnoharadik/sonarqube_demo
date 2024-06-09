@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  sonarqube:
+    image: sonarqube:9.9.5-community
+    container_name: sonarqube
+    restart: always
+    ports:
+      - "9100:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    init: true
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
