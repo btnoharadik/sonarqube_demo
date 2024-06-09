@@ -20,6 +20,7 @@ public class DemoApplication {
 				String line = scanner.nextLine();
 				System.out.println(line);
 			}
+
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 		}
