@@ -24,6 +24,19 @@ public class DemoApplication {
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 		}
+
+		try {
+			File file = new File("file.txt");
+			Scanner scanner = new Scanner(file);
+
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				System.out.println(line);
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found.");
+		}
 	}
 
 }
