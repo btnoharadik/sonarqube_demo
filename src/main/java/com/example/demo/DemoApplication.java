@@ -8,6 +8,9 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+
+		String password = "password123";
+		System.out.println("Password: " + password);
 	}
 
 }
