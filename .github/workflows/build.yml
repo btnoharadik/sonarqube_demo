@@ -1,6 +1,8 @@
 name: Build
 
-on: [push]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   Explore-GitHub-Actions:
@@ -26,6 +28,7 @@ jobs:
 
       - name: Run SonarQube analysis
         run: ./gradlew sonar
+          -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
         env:
           SONARQUBE_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
           SONARQUBE_LOGIN: ${{ secrets.SONARQUBE_LOGIN }}
