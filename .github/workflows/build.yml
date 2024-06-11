@@ -25,11 +25,12 @@ jobs:
         run: ./gradlew build
 
       - name: Run SonarQube analysis
-        run: ./gradlew sonar
-          -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
-          -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
-          -Dsonar.pullrequest.base=main
-          -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
+        run: |
+          ./gradlew sonar \
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+            -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }} \
+            -Dsonar.pullrequest.base=main \
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
         env:
           SONARQUBE_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
           SONARQUBE_LOGIN: ${{ secrets.SONARQUBE_LOGIN }}
